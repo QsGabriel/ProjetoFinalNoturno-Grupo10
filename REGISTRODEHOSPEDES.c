@@ -16,7 +16,7 @@ void inserirHospede(Hospede hospedes[], int numeroQuarto) {
         hospedes[numeroQuarto - 1].quarto = numeroQuarto;
         printf("Digite o nome do hospede: ");
         scanf("%s", hospedes[numeroQuarto - 1].nome);
-        printf("Hóspede inserido no quarto %d com sucesso.\n", numeroQuarto);
+        printf("Hospede inserido no quarto %d com sucesso.\n", numeroQuarto);
     } else {
         printf("O quarto %d está ocupado. Escolha outro quarto.\n", numeroQuarto);
     }
