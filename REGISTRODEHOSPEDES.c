@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NUM_QUARTOS 10
+#define NUM_QUARTOS 15
 #define TAM_NOME 50
 
 int i = 0;
@@ -21,7 +21,7 @@ void inserirHospede(Hospede hospedes[], int numeroQuarto) {
         printf("O quarto %d está ocupado. Escolha outro quarto.\n", numeroQuarto);
     }
 }
-
+// Função para listar os hóspedes
 void listarHospedes(Hospede hospedes[]) {
     printf("Lista de Hospedes:\n");
     for (int i = 0; i < NUM_QUARTOS; i++) {
@@ -30,7 +30,7 @@ void listarHospedes(Hospede hospedes[]) {
         }
     }
 }
-
+// Função para buscar hóspedes
 void buscarHospede(Hospede hospedes[]) {
     char nome[TAM_NOME];
     printf("Digite o nome do hospede: ");
@@ -45,7 +45,7 @@ void buscarHospede(Hospede hospedes[]) {
 
     printf("Hospede nao encontrado.\n");
 }
-
+// Função para editar hóspedes
 void editarHospede(Hospede hospedes[]) {
     int numeroQuarto;
     printf("Digite o numero do quarto do hospede que deseja editar: ");
@@ -63,7 +63,7 @@ void editarHospede(Hospede hospedes[]) {
         printf("Quarto invalido. Tente novamente.\n");
     }
 }
-
+// Função para remover hóspedes
 void removerHospede(Hospede hospedes[]) {
     int numeroQuarto;
     printf("Digite o numero do quarto do hospede que deseja remover: ");
@@ -82,7 +82,7 @@ void removerHospede(Hospede hospedes[]) {
         printf("Quarto invalido. Tente novamente.\n");
     }
 }
-
+// Função para exibir quartos vazios
 void mostrarQuartosVazios(Hospede hospedes[]) {
     printf("Quartos vazios:\n");
     int vazio = 1;
@@ -97,7 +97,7 @@ void mostrarQuartosVazios(Hospede hospedes[]) {
     else
         printf("\n");
 }
-
+// Função para salvar listagem de hóspedes
 void salvarHospedes(Hospede hospedes[]) {
     FILE *arquivo;
     arquivo = fopen("lista_hospedes.txt", "w");
@@ -124,7 +124,7 @@ int main() {
     for (i = 0; i < NUM_QUARTOS; i++) {
         hospedes[i].quarto = 0;
     }
-
+    // Impressões do menu
     do {
         printf("\nBem-vindo(a) ao Menu do HostSystem, escolha uma opcao abaixo:\n");
         printf("1. Inserir um novo hospede em um quarto vazio\n");
@@ -137,7 +137,7 @@ int main() {
         printf("0. Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
-
+    // Detalhamento de opções do menu
         switch (opcao) {
             case 1:
                 printf("Digite o numero do quarto: ");
