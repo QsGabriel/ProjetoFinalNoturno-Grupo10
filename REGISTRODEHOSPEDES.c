@@ -126,7 +126,7 @@ int main() {
     }
 
     do {
-        printf("\nMenu:\n");
+        printf("\nBem-vindo(a) ao Menu do HostSystem, escolha uma opcao abaixo:\n");
         printf("1. Inserir um novo hospede em um quarto vazio\n");
         printf("2. Listar hospedes\n");
         printf("3. Buscar hospede\n");
