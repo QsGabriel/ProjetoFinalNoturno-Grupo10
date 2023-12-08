@@ -46,7 +46,6 @@ void buscarHospede(Hospede hospedes[]) {
     printf("Hospede nao encontrado.\n");
 }
 
-// Função para editar o nome de um hóspede
 void editarHospede(Hospede hospedes[]) {
     int numeroQuarto;
     printf("Digite o numero do quarto do hospede que deseja editar: ");
@@ -65,7 +64,6 @@ void editarHospede(Hospede hospedes[]) {
     }
 }
 
-// Função para remover um hóspede
 void removerHospede(Hospede hospedes[]) {
     int numeroQuarto;
     printf("Digite o numero do quarto do hospede que deseja remover: ");
@@ -85,12 +83,44 @@ void removerHospede(Hospede hospedes[]) {
     }
 }
 
-// Função principal
+void mostrarQuartosVazios(Hospede hospedes[]) {
+    printf("Quartos vazios:\n");
+    int vazio = 1;
+    for (int i = 0; i < NUM_QUARTOS; i++) {
+        if (hospedes[i].quarto == 0) {
+            printf("%d ", i + 1);
+            vazio = 0;
+        }
+    }
+    if (vazio)
+        printf("Nenhum quarto vazio.\n");
+    else
+        printf("\n");
+}
+
+void salvarHospedes(Hospede hospedes[]) {
+    FILE *arquivo;
+    arquivo = fopen("lista_hospedes.txt", "w");
+
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo.\n");
+        return;
+    }
+
+    for (int i = 0; i < NUM_QUARTOS; i++) {
+        if (hospedes[i].quarto != 0) {
+            fprintf(arquivo, "Quarto %d: %s\n", hospedes[i].quarto, hospedes[i].nome);
+        }
+    }
+
+    fclose(arquivo);
+    printf("Lista de hospedes salva no arquivo 'lista_hospedes.txt'.\n");
+}
+
 int main() {
     Hospede hospedes[NUM_QUARTOS];
     int opcao, numeroQuarto;
 
-    // Inicializar todos os quartos como vazios
     for (i = 0; i < NUM_QUARTOS; i++) {
         hospedes[i].quarto = 0;
     }
@@ -102,6 +132,8 @@ int main() {
         printf("3. Buscar hospede\n");
         printf("4. Editar hospede\n");
         printf("5. Remover hospede\n");
+        printf("6. Mostrar quartos vazios\n");
+        printf("7. Salvar lista de hospedes com respectivos quartos em arquivo\n");
         printf("0. Sair\n");
         printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
@@ -123,6 +155,12 @@ int main() {
                 break;
             case 5:
                 removerHospede(hospedes);
+                break;
+            case 6:
+                mostrarQuartosVazios(hospedes);
+                break;
+            case 7:
+                salvarHospedes(hospedes);
                 break;
             case 0:
                 printf("Saindo do programa.\n");
